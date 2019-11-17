@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "welcome to jekyll"
-date:   2019-10-22 22:30:00 -0300
+title: "bem vindo!"
+date: 2019-10-22 22:30:00 -0300
+lang: pt-br
+ref: bem-vindo
 categories: update
+flag: '&#x1F1E7;&#x1F1F7;'
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 

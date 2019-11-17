@@ -24,12 +24,16 @@ author: leandro maciel
 description: >- 
   infraestrutura / análise de dados
   desenvolvimento / aleatoridades
+index:
+  pt-br: /
+  en: /en/
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://web.leandrojmp.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: leandrojmp
 github_username:  leandrojmp
 instagram_username:  leandrojmp
-permalink: /:categories/:title/
+lang: pt-br
+permalink: /posts/:categories/:title
 # Build settings
 theme: minima
 plugins:

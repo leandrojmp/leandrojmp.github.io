@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-lang: pt-br
+lang: en
 ref: index
-permalink: /
+permalink: /en/
 ---
