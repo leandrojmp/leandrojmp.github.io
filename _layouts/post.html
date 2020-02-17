@@ -14,7 +14,7 @@ layout: posts
     <p>
       {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
       {% for post in posts %}
-        <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.flag }}</a>
+        [ <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.lang }}</a> ]
       {% endfor %}
     </p>
   </header>
@@ -22,10 +22,6 @@ layout: posts
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
-
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
