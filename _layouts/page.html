@@ -9,7 +9,7 @@ layout: default
     <p>
       {% assign posts=site.pages | where:"ref", page.ref | sort: 'lang' %}
       {% for post in posts %}
-        [ <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.lang }}</a> ]
+        <a href="{{ post.url }}" class="pure-button pure-button-primary">{{ post.lang }}</a>
       {% endfor %}
     </p>
     {% endif %}
