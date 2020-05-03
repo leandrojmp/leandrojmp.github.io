@@ -17,6 +17,11 @@ layout: posts
       {% for post in posts %}
         [ <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.lang }}</a> ]
       {% endfor %}
+      <!-- <span>
+        {% for tag in page.tags %}
+          <b>{{ tag }}</b>
+        {% endfor %}
+      </span> -->
     </p>
   </header>
 
