@@ -105,12 +105,12 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
 .pure-button-selected,
 a.pure-button-primary,
 a.pure-button-selected {
-    background-color: rgb(0, 120, 231);
+    background-color: #5E81AC;
     color: #fff;
 }
 
 a.pure-button-primary:hover {
-    background-color: rgb(91, 171, 224);
+    background-color: #88C0D0;
     color: #fff;
     text-decoration: none;
 }
