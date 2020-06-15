@@ -16,7 +16,7 @@ github_username:  leandrojmp
 instagram_username:  leandrojmp
 lang: pt-br
 permalink: /:categories/:title
-
+show_excerpts: false
 # Build settings
 theme: minima
 #plugins:

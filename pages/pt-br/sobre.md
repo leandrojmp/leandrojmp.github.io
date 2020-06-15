@@ -1,6 +1,5 @@
 ---
 layout: page
-icon: fa-address-card
 title: sobre
 permalink: /sobre/
 lang: pt-br

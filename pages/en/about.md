@@ -1,7 +1,6 @@
 ---
 layout: page
 title: about
-icon: fa-address-card
 permalink: /about/
 lang: en
 ref: sobre
