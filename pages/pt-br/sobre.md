@@ -8,7 +8,7 @@ ref: info
 
 Olá, meu nome é Leandro, sou formado em Engenharia Eletrônica, mas trabalho com Administração de Sistemas, mais especificamente nas áreas de Infraestrutura e Monitoramento.
 
-Nos últimos anos tenho me interessado mais pela área de Engenharia de Dados, todo o processo que envolve a aquisição, tratamento, transformação e compartilhamento de dados para análise e uso posterior, também tenho buscado aprender mais sobre desenvolvimento em geral e algumas linguagens de programação, no momento venho estudando [Python][python] e [Go][golang].
+Nos últimos anos tenho me interessado mais pela área de Engenharia de Dados, todo o processo que envolve a aquisição, tratamento, transformação e compartilhamento de dados para análise e uso posterior. Também tenho buscado aprender mais sobre desenvolvimento em geral e algumas linguagens de programação. No momento, venho estudando [Python][python] e [Go][golang].
 
 Vou utilizar esse espaço para compartilhar postagens sobre assuntos ou ferramentas que venho estudando e utilizando, tanto no trabalho, quanto em projetos pessoais.
 
