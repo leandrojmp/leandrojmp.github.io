@@ -3,17 +3,19 @@ layout: page
 title: about
 permalink: /about/
 lang: en
-ref: sobre
+ref: info
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hello, my name is Leandro, I have a _BSc_ in Electronics Engineering, but I work as a SysAdmin, more specifically with Infrastructure and Monitoring.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+In the last few years I've acquired a growing interest in Data Engineering, all parts of the process of acquiring, treating, transforming and sharing data for posterior analysis and usage, I've been also trying to learn more about development and some programming languages, at this time I'm studying [Python][python] and [Go][golang].
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+I will be going to use this space to share posts about topics or tools that I've been studying or using, both at work and on personal projects.
 
-[jekyll-organization]: https://github.com/jekyll
+You can also find me on  [twitter][twitter], [instagram][instagram] and [github][github].
+
+[twitter]: https://twitter.com/leandrojmp
+[instagram]: https://instagram.com/leandrojmp
+[python]: https://www.python.org
+[golang]: https://golang.org
+[github]: https://github.com/leandrojmp
