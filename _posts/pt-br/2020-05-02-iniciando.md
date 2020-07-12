@@ -4,7 +4,7 @@ title: "/iniciando"
 date: 2020-07-05 22:00:00 -0300
 lang: pt-br
 ref: intro
-categories: [ posts ]
+categories: [ posts, pt-br ]
 tags: [ intro, random ]
 cover: /img/posts/random/cover-0001.png
 ---
