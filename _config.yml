@@ -15,7 +15,7 @@ twitter_username: leandrojmp
 github_username:  leandrojmp
 instagram_username:  leandrojmp
 lang: pt-br
-permalink: /:categories/:title
+permalink: /:categories/:year/:month/:title
 show_excerpts: false
 # Build settings
 theme: minima
