@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "/iniciando"
-date: 2020-07-05 22:00:00 -0300
+date: 2020-08-08 22:00:00 -0300
 lang: pt-br
 ref: "p0001"
 categories: [ posts, pt-br ]
