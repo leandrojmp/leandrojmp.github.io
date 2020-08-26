@@ -10,7 +10,7 @@ cover: /img/posts/covers/0002.png
 ---
 ### Introdução
 
-Já tem um tempo que utilizo a pilha da elastic pra coletar e armazenar logs de aplicações, serviços e dispositivos que preciso monitorar. Sendo o **Logstash** o responsável em receber, tratar e publicar os logs, garantir que ele tenha um bom desempenho é extremamente importante.
+Já tem um tempo que utilizo a pilha da [elastic][elk] pra coletar e armazenar logs de aplicações, serviços e dispositivos que preciso monitorar. Sendo o **Logstash** o responsável em receber, tratar e publicar os logs, garantir que ele tenha um bom desempenho é extremamente importante.
 
 Boa parte dos problemas de desempenho que enfrentei estavam relacionados a erros de configuração, implantação ou uso incorreto de alguns filtros, principalmente o filtro `grok`.
 
@@ -168,3 +168,4 @@ Nos casos onde os logs coletados seguem sempre a mesma estrutura, como acontece 
 
 [dissect]: https://www.elastic.co/guide/en/logstash/current/plugins-filters-dissect.html
 [grok]: https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+[elk]: https://www.elastic.co/elastic-stack
