@@ -6,9 +6,7 @@
   <script src="https://kit.fontawesome.com/7e967f095c.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-  {%- endif -%}
+  {%- include twitter-meta.html -%}
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="{{ "/assets/buttons.css" | relative_url }}">
