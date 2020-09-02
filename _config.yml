@@ -18,5 +18,6 @@ permalink: /:categories/:year/:month/:title
 show_excerpts: false
 # Build settings
 theme: minima
-#plugins:
+plugins:
 #  - jekyll-feed
+  - jekyll-sitemap
