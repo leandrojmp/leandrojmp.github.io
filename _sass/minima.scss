@@ -13,10 +13,12 @@ $monospace: 'Source Code Pro', monospace;
 $spacing-unit:     30px !default;
 
 $text-color:       #111 !default;
-$background-color: #fdfdfd !default;
+$background-color: #eceff4 !default;
+// $background-color: #fdfdfd !default;
 $brand-color:      #2a7ae2 !default;
 
-$grey-color:       #828282 !default;
+// $grey-color:       #828282 !default;
+$grey-color:       #434c5e !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
