@@ -11,9 +11,9 @@ cover: /img/posts/covers/0002.png
 ### Introduction
 
 
-It has been a while since I've been using the [elastic stack][elk] to collect and store logs from applications, services and devices that I need monitor. Since **Logstash** is responsible for receiving, parsing and publishing those logs, it is extremely important that we guarantee that it has a good performance.
+It has been a while since I've been using the [elastic stack][elk] to collect and store logs from applications, services and devices that I need to monitor. Since **Logstash** is responsible for receiving, parsing and publishing those logs, it is extremely important that we guarantee that it has a good performance.
 
-A lot of the performance problems that I've had, where caused by configuration errors, implementation or incorrect usage of some filters, mainly the `grok` filter.
+A lot of the performance problems that I've had were caused by configuration errors, implementation or incorrect usage of some filters, mainly the `grok` filter.
 
 While the `grok` filter is extremely useful, it is a filter based on regular expressions and it needs to validate every expression, depending on how many events per second logstash is receiving, those validations could lead to a increase load on the CPU which could affect the entire monitoring process.
 
