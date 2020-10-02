@@ -7,13 +7,13 @@ layout: posts
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p>{% if page.cover %}<img src="{{ page.cover }}"/>{% endif %}</p>
     <p class="post-meta">
-      <time class="dt-published meta-bar-info" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+      <time class="dt-published label-info" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%d-%m-%Y" -%}
         {{ page.date | date: date_format }}
       </time><span>&nbsp;</span>
       {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
       {% for post in posts %}
-        <a href="{{ post.url }}" class="meta-bar-link">{{ post.lang }}</a>
+        <a href="{{ post.url }}" class="label-link-lang">{{ post.lang }}</a>
       {% endfor %}
     </p>
   </header>

@@ -9,7 +9,7 @@ layout: default
     <p class="post-meta">
       {% assign posts=site.pages | where:"ref", page.ref | sort: 'lang' %}
       {% for post in posts %}
-        <a href="{{ post.url }}" class="meta-bar-link">{{ post.lang }}</a>
+        <a href="{{ post.url }}" class="label-link-lang">{{ post.lang }}</a>
       {% endfor %}
     </p>
     {% endif %}

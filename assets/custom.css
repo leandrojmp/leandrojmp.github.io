@@ -7,7 +7,32 @@ Licensed under the BSD License.
 https://github.com/pure-css/pure/blob/master/LICENSE.md
 */
 
-.meta-bar-info {
+.label-info {
+    font-family: inherit;
+    font-size: 90%;
+    padding: 0.5em 1em;
+    color: rgba(255, 255, 255, 1); /* rgba supported */
+    border: 1px solid #999;  /*IE 6/7/8*/
+    border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+    background-color: #434c5e;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.label-date {
+    font-family: inherit;
+    font-size: 80%;
+    padding: 0.5em;
+    color: rgba(255, 255, 255, 1); /* rgba supported */
+    border: 1px solid #999;  /*IE 6/7/8*/
+    border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+    background-color: #434c5e;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.label-link-lang {
     font-family: inherit;
     font-size: 90%;
     padding: 0.5em 1em;
@@ -19,24 +44,12 @@ https://github.com/pure-css/pure/blob/master/LICENSE.md
     border-radius: 5px;
 }
 
-.meta-bar-link {
-    font-family: inherit;
-    font-size: 90%;
-    padding: 0.5em 1em;
-    color: rgba(255, 255, 255, 1); /* rgba supported */
-    border: 1px solid #999;  /*IE 6/7/8*/
-    border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
-    background-color: #434c5e;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-a.meta-bar-link {
+a.label-link-lang {
     background-color: #5E81AC;
     color: #fff;
 }
 
-a.meta-bar-link:hover {
+a.label-link-lang:hover {
     background-color: #88C0D0;
     color: #fff;
     text-decoration: none;
