@@ -14,7 +14,7 @@ Embora hoje em dia seja extremamente simples criar na nuvem um ambiente temporá
 
 Nesse pequeno servidor eu costumo criar máquinas virtuais utilizando o **KVM**/**Virt-Manager**, ou containers utilizando o **Docker**, onde rodo serviços e aplicações que quero aprender como funcionam, fazer provas de conceito e realizar alguns testes com aplicações que já utilizo tanto no trabalho quanto em projetos pessoais.
 
-Como estou em um ambiente controlado, acabo negligenciando um pouco as questões relacionadas a segurança e não utilizo certificados _SSL/TLS_ nos serviços e na comunicação entre eles, o que é algo que não vai acontecer no mundo real e frequentemente exige um trabalho extra pra validar as configurações e funcionamento com certificados na hora de implementar em produção.
+Como estou em um ambiente controlado, acabo negligenciando um pouco as questões relacionadas a segurança e não utilizo certificados _SSL/TLS_ nos serviços e na comunicação entre eles. Isso é algo que não deve acontecer no mundo real e frequentemente exige um trabalho extra pra validar as configurações e funcionamento com certificados na hora de implementar em produção.
 
 Uma forma simples pra se acostumar a trabalhar sempre com certificados é criar uma Autoridade Certificadora local para criar e assinar certificados para as aplicações e serviços.
 

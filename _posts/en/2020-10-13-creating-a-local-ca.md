@@ -10,7 +10,7 @@ cover: /img/posts/covers/0003.png
 ---
 ### Introduction
 
-Although today is pretty easy to deploy a temporary environment in the cloud for study or run some tests, I'm a little _old school_ and still use a small computer as a home lab, nothing complex, just and old _Dell OptiPlex Micro_ with a **Core i5**, **16 GB** of RAM and **500 GB** of disk.
+Although today it is pretty easy to deploy a temporary environment in the cloud for study or run some tests, I'm a little _old school_ and still use a small computer as a home lab, nothing complex, just and old _Dell OptiPlex Micro_ with a **Core i5**, **16 GB** of RAM and **500 GB** of disk.
 
 In this small server I usually run some virtual machines using **KVM**/**Virt-Manager** or **Docker** containers where I deploy some services and applications that I want to learn, to make some proofs of concept or perform some tests with applications that I already use both at work and in side projects.
 
