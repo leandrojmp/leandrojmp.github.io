@@ -8,7 +8,7 @@ categories: [ posts, pt-br ]
 tags: [ logstash, elastic ]
 cover: /img/posts/covers/0004.png
 ---
-Um ponto importante no monitoramento de dispositivos, aplicações ou sistemas expostos na internet, é incluir informações sobre a origem dos acessos ou tentativas de acessos que recebemos.
+Um ponto importante no monitoramento de dispositivos, aplicações ou sistemas expostos na internet, é incluir informações sobre a origem dos acessos ou tentativas de acesso que recebemos.
 
 Isso é útil tanto pelo lado da infraestrutura e segurança quanto pelo lado do negócio. Por exemplo, sabendo a origem e quantidade dos acessos, ou tentativas, podemos planejar melhor a distribuição geográfica de servidores, detectar acessos comprometidos ou tentativas de ataque e identificar novas oportunidades de negócios em localidades diferentes.
 
@@ -20,13 +20,13 @@ O filtro `geoip` tem uma função bem simples, ele consulta um endereço IP em u
 
 ![geoip](/img/posts/0004/0004-01.png)
 
-No caso do filtro `geoip` utilizado pelo logstash a base interna onde as informações de geolocalização são consultadas é a `GeoLite2` fornecida pela [maxmind][maxmind] e ao utilizarmos o filtro em um endereço IP é possível obter, além das informações geográficas, as informações referentes ao Sistema Autônomo (_AS_) associadas ao roteamento.
+No caso do filtro `geoip` utilizado pelo logstash, a base interna onde as informações de geolocalização são consultadas é a `GeoLite2`, fornecida pela [maxmind][maxmind], e ao utilizarmos o filtro em um endereço IP é possível obter, além das informações geográficas, as informações referentes ao Sistema Autônomo (_AS_) associadas ao roteamento.
 
 Para utilizar o filtro `geoip` você precisa que o seu evento tenha um campo onde o valor é um endereço IP público e precisa também criar um mapeamento específico no seu índice para armazenar campos com informações de geolocalização.
 
 ### aplicando o filtro
 
-Como exemplo para aplicação do filtro `geoip` nesse post, vou utilizar uma [API simples][go-sysmon] que desenvolvi em Go e que retorna o estado das conexões de uma máquina linux, emulando parte do funcionamento do _netstat_.
+Como exemplo para aplicação do filtro `geoip` vou utilizar uma [API simples][go-sysmon] que desenvolvi em Go e que retorna o estado das conexões de uma máquina linux, emulando parte do funcionamento do _netstat_.
 
 Quando consultada a API retorna um documento JSON no seguinte formato.
 
@@ -40,7 +40,7 @@ Quando consultada a API retorna um documento JSON no seguinte formato.
 }
 ```
 
-Onde o campo `srcip` corresponde ao IP local da máquina e o campo `dstip` corresponde ao IP externo da conexão, é esse campo que iremos utilizar com o filtro `geoip`.
+O campo `srcip` corresponde ao IP local da máquina e o campo `dstip` corresponde ao IP externo da conexão, é esse campo que iremos utilizar com o filtro `geoip`.
 
 Para consumir essa API com o logstash, vou utilizar como `input` o filtro `http_poller`, que basicamente fica fazendo requisições para um _endpoint_ configurado em um intervalo específico de tempo.
 
@@ -55,7 +55,7 @@ input {
 
 >  A forma como os dados são recebidos pelo logstash não faz diferença pro filtro `geoip`, você só precisa de um campo com um IP público.
 
-A configuração mais simples do filtro [`geoip`][geoip] exige apenas uma parâmetro obrigatório, o `source`, que define qual é o campo com o IP que queremos descobrir a geolocalização.
+A configuração mais simples do filtro [`geoip`][geoip] exige apenas uma opção obrigatória, `source`, que define qual é o campo com o IP que queremos descobrir a geolocalização.
 
 ```
 filter {
@@ -90,14 +90,14 @@ Quando o evento passa por esse filtro com sucesso, um novo campo chamado `geoip`
 
 Em caso de falha, a tag `_geoip_lookup_failure` será adicionada.
 
-Podemos alterar esse comportamento padrão utilizando outros parâmetros na configuração do filtro.
+Podemos alterar esse comportamento padrão utilizando outras opções na configuração do filtro.
 
 - `target`: nome do campo para salvar as informações de geolocalização, o padrão é o campo `geoip`
 - `default_database_type`: tem apenas duas opções `City` e `ASN`, a primeira é o padrão e traz informações geográficas, a segunda traz informações do Sistema Autônomo (_AS_) associado.
 - `fields`: os campos que serão retornados, por padrão traz todos os disponíveis.
 - `tag_on_failure`: o nome da tag que será adicionada ao evento em caso de falha, por padrão é `_geoip_lookup_failure`.
 
-Como a ideia é enriquecer os eventos, vamos utilizar dois filtros `geoip` na sequência, um com o parâmetro `default_database_type` igual a `City` e outro com o mesmo parâmetro configurado como `ASN`.
+Como a ideia é enriquecer os eventos, vamos utilizar dois filtros `geoip` na sequência, um com a opção `default_database_type` igual a `City` e outro com a mesma opção configurada como `ASN`.
 
 ```
 filter {
@@ -235,7 +235,7 @@ PUT _template/endpoints
 }
 ```
 
-> Como o template só é aplicado durante a criação do índice, caso o índice tenha sido criado antes é preciso deletá-lo com o request `DELETE endpoints`
+> Como o template só é aplicado durante a criação do índice, caso o índice tenha sido criado antes, é preciso deletá-lo com o request `DELETE endpoints`
 
 Com o template criado, podemos adicionar o output para o elasticsearch no pipeline.
 
@@ -256,7 +256,7 @@ Assim que iniciamos o logstash com o pipeline configurado, os dados começarão 
 
 Enquanto o nosso evento inicial trazia apenas a informação do IP de destino, utilizando o filtro de `geoip` conseguimos enriquecer o documento adicionando informações relacionadas a esse IP de destino.
 
-O campo `geo.country_name` é um exemplo de informação gerada pelo filtro `geoip` com a opção `default_database_type` como `City` e o campo `geo.as_org` é um exemplo de informação gerada quando usamos `default_database_type` como `ASN`, por isso utilizamos dois filtros `geoip` no pipeline.
+O campo `geo.country_name` é um exemplo de informação gerada pelo filtro `geoip` com a opção `default_database_type` como `City` e o campo `geo.as_org` é um exemplo de informação gerada quando usamos `default_database_type` como `ASN`, esse é o motivo para termos utilizado dois filtros `geoip` no pipeline.
 
 Podemos ainda visualizar graficamente esses dados utilizando a ferramenta _Maps_ dentro kibana.
 
@@ -271,6 +271,8 @@ Um ponto importante que devemos considerar é que a precisão das coordenadas ob
 Esse [link][precision] no site da [maxmind][maxmind] permite ter uma estimativa da precisão em cada caso.
 
 > O resultado do filtro geoip nunca deve ser considerado como exato e pode não corresponder com a realidade.
+
+Para mais informações sobre o filtro `geoip`, você pode consultar a [documentação oficial][geoip] da elastic.
 
 [maxmind]: https://dev.maxmind.com/geoip/geoip2/geolite2/
 [go-sysmon]: https://github.com/leandrojmp/go-sysmon
