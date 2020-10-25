@@ -10,7 +10,7 @@ cover: /img/posts/covers/0004.png
 ---
 Um ponto importante no monitoramento de dispositivos, aplicações ou sistemas expostos na internet, é incluir informações sobre a origem dos acessos ou tentativas de acessos que recebemos.
 
-Isso é útil tanto pelo lado da infraestrutura e segurança quanto pelo lado do negócio, por exemplo, sabendo a origem e quantidade dos acessos ou tentativas podemos planejar melhor a distribuição geográfica de servidores, detectar acessos comprometidos ou tentativas de ataque e identificar novas oportunidades de negócios em localidades diferentes.
+Isso é útil tanto pelo lado da infraestrutura e segurança quanto pelo lado do negócio. Por exemplo, sabendo a origem e quantidade dos acessos, ou tentativas, podemos planejar melhor a distribuição geográfica de servidores, detectar acessos comprometidos ou tentativas de ataque e identificar novas oportunidades de negócios em localidades diferentes.
 
 Uma forma bem simples de se fazer isso quando temos a pilha elastic como uma das ferramentas de monitoramento é utilizar o filtro `geoip` do logstash.
 
@@ -273,7 +273,7 @@ Esse [link][precision] no site da [maxmind][maxmind] permite ter uma estimativa 
 > O resultado do filtro geoip nunca deve ser considerado como exato e pode não corresponder com a realidade.
 
 [maxmind]: https://dev.maxmind.com/geoip/geoip2/geolite2/
-[go-sysmon]: https://dev.maxmind.com/geoip/geoip2/geolite2/
+[go-sysmon]: https://github.com/leandrojmp/go-sysmon
 [http_poller]: https://www.elastic.co/guide/en/logstash/current/plugins-inputs-http_poller.html
 [geoip]: https://www.elastic.co/guide/en/logstash/current/plugins-filters-geoip.html
 
