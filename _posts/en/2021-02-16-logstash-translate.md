@@ -8,21 +8,21 @@ categories: [ posts, en ]
 tags: [ logstash, elastic ]
 cover: /img/posts/covers/0005.png
 ---
-Quando usamos o logstash para processar os dados antes de enviarmos para o destino final, seja ele o elasticsearch ou alguma outra saída, pode ser interessante realizar algum tipo de enriquecimento nos dados para facilitar o processo de análise, monitoramento e filtragem.
+When we use logstash to process data before sending it to the final destination, be it elasticsearch or some other output, it may be useful to perform some kind of data enrichment to help with the analysis, monitoring or filtering.
 
-Podemos por exemplo substituir informações de códigos de dispositivos por palavras chaves que vão dar uma visão melhor do que está sendo monitorado ou que tipo de informação estamos vendo.
+For example, we can replace some device code with a string that will give a better view of what is being monitored or what type of information we are seeing.
 
-Um filtro do logstash que possibilita realizar esse enriquecimento nos dados é o filtro `translate`.
+A logstash filter that allows us to do this data enrichment is the `translate` filter.
 
-### o filtro translate
+### the translate filter
 
-O filtro `translate` funciona de uma forma bem simples, ele verifica se o valor de um campo existe como chave em um dicionário do tipo chave-valor e caso exista ele pode substituir o valor atual do campo pelo valor do dicionário ou criar um novo campo com esse valor.
+The `translate` filter works in a very simple way, it checks if the value of a field exists as a key in a given key-value dictionary and if it exists it can replace the current value of the field with the dictionary value or create a new field with the dictionary value.
 
 ![0005-01](/img/posts/0005/0005-01.png)
 
-Como exemplo vamos considerar que temos um dispositivo que monitora o número de pessoas que entraram ou saíram de um local, calcula o número médio de pessoas em determinado momento e envia esses dados para um logstash em um intervalo de tempo configurável.
+As an example, let's consider that we have a device that monitors the number of people entering or leaving a location, calculates the average number of people at any given time and sends this data to a logstash according to a configurable schedule.
 
-Considerando o seguinte payload como documento:
+Considering the following payload as a document:
 
 ```json
 {
@@ -33,24 +33,24 @@ Considerando o seguinte payload como documento:
 }
 ```
 
-Nesse documento temos os seguintes campos:
+In this document we have the following fields:
 
-- `storeId`**:** um identificador do local onde o dispositivo está instalado
-- `customerIn`**:** o número de pessoas que entraram no local
-- `customerOut`**:** o número de pessoas que saíram do local
-- `customerAvg`**:** o número médio de pessoas no local no momento da coleta
+- `storeId`**:** the id of the location where the device is installed
+- `customerIn`**:** the number of customers entering the location
+- `customerOut`**:** the number of customers leaving the location
+- `customerAvg`**:** the average number of customers in the location when the data was acquired
 
-Quando temos uma quantidade pequena de dispositivos pode até ser possível lembrar a localização de cada um através do campo `storeId`, mas a medida que o número aumenta, essa tarefa já se torna mais complicada e ter informações extras sobre o dispositivo é algo extremamente útil.
+When we have a small number of devices it may be possible to remember the location of each one using the `storeId` field, but as this number increases, this task becomes more complicated and having extra information about the devices is extremely useful .
 
-### aplicando o filtro
+### applying the filter
 
-O principal componente do filtro `translate` é o seu dicionário, que pode tanto estar presente diretamente na configuração do filtro, quanto estar em um arquivo externo.
+The main component of the `translate` filter is its dictionary, which can either be directly in the filter configuration or in an external file.
 
-Quando utilizamos arquivos externos para o dicionário podemos utilizar um arquivo no formato `YAML`, `CSV` ou `JSON`, onde cada item é um par de chave-valor.
+When we have our dictionary in an external file, we can use a `YAML`, `CSV` or `JSON` file, where each item is a key-value pair.
 
-Para esse exemplo vamos considerar que nosso dispositivo está localizado em uma loja de lembranças no _Aeroporto Schiphol_ em Amsterdã, que tem como código as letras **AMS**. 
+For this example, let's consider that our device is located in a gift shop store at the _Schiphol Airport_ in Amsterdam, which has the code **AMS**.
 
-Queremos criar um novo campo chamado `storeName` a partir do valor do campo `storeId`.
+We want to create a new field named `storeName` based on the value of the field `storeId`.
 
 ```
 translate {
@@ -62,9 +62,9 @@ translate {
 }
 ```
 
-Quando um evento onde o campo `storeId` tem o valor igual a **1** passar por esse filtro, um novo campo chamado `storeName` com o valor **AMS** será criado.
+When an event where the field `storeId` has the value equal to **1** pass through this filter, a new field named `storeName` with the value **AMS** will be created.
 
-Considerando agora que temos um novo dispositivo com o `storeId` igual a **2** instalado em uma outra filial da mesma loja localizada no _Aeroporto do Galeão_ no Rio de Janeiro, que tem como código as letras **GIG**, o dicionário do filtro precisa então ter essa nova informação. 
+Let's consider now that we have a new device where the `storeId` field has the value equal to **2** in another store of the same gift shop chain located at the _Galeão Airport_ in Rio de Janeiro, which has the code **GIG**, the filter dictionary needs to be updated with this new information.
 
 ```
 dictionary => {
@@ -73,7 +73,7 @@ dictionary => {
 }
 ```
 
-A medida que o número de dispositivos aumenta, a opção de usar um dicionário em um arquivo externo se torna mais interessante, nesse caso precisamos apenas criar o arquivo, salvar em um lugar onde o logstash tenha permissão de leitura e configurar o filtro para ler esse arquivo.
+As the number of devices grows, having the dictionary in an external file becomes more practical, in this case we just need to create the file, save it in a path where logstash has read permissions and configure the filter to read this file.
 
 ```yaml
 "1": "AMS"
@@ -82,21 +82,21 @@ A medida que o número de dispositivos aumenta, a opção de usar um dicionário
 "4": "BER"
 ```
 
-Salvando o dicionário acima como `store.yml`, podemos configurar o filtro `translate` para ler desse arquivo e verificar se houve alguma atualização em um intervalo agendado.
+Saving the above dictionary as `store.yml`, we can configure the `translate` filter to read this file and check for updates at a scheduled interval.
 
 ```
 translate {
 	field => "storeId"
 	destination => "storeName"
-	dictionary_path => "/caminho/para/o/arquivo/store.yml"
+	dictionary_path => "/path/to/the/file/store.yml"
 	refresh_interval => 300
-	fallback => "local desconhecido"
+	fallback => "unknown place"
 }
 ```
 
-Na configuração acima a opção `refresh_interval` determina o intervalo em segundos que o logstash deve verificar se houve alteração no arquivo e em caso positivo carregar as alterações em memória, a opção `fallback` é utilizada quando o valor do campo `storeId` não é encontrado no dicionário.
+In the above configuration the option `refresh_interval` sets the interval in seconds that logstash should check the file for changes and load the changes into memory, the option `fallback` is used when the value of the field `storeId` isn't found in the dictionary.
 
-Sendo assim:
+As an example we have a `payload` and an `output`.
 
 `PAYLOAD`
 
@@ -118,51 +118,51 @@ Sendo assim:
 	"@version" => "1"
 }
 ```
-### substituindo o campo original
+### replacing the original field
 
-Podem haver casos onde queremos substituir o valor do campo original e não criar um novo campo, para isso o campo de origem e destino deve ser o mesmo, utilizamos a opção `override` como `true` e desabilitamos a opção de `fallback`, pois caso o valor buscado não exista no dicionário, conseguimos identificar pelo `storeId` e atualizá-lo.
+There may be cases where we want to replace the value of the original field instead of creating a new field, to do that we need to use the same field as source and destination, set the `override` option as `true` and disable the `fallback` option, because if the search value does not exist in the dictionary, we can use the `storeId` original value to identify the device and update the dictionary.
 
 ```
 translate {
 	field => "storeId"
 	destination => "storeId"
-	dictionary_path => "/caminho/para/o/arquivo/store.yml"
+	dictionary_path => "/path/to/the/file/store.yml"
 	refresh_interval => 300
 	override => true
 }
 ```
 
-### um translate ou múltiplos translates?
+### one translate or multiple translates? 
 
-Em alguns casos podemos também querer adicionar múltiplos campos a partir de um mesmo valor, no nosso exemplo poderíamos adicionar além do nome com o código do Aeroporto, a localização geográfica, o tamanho da loja, o país ou qualquer outro tipo de informação que possa ser útil para alguma análise posterior.
+In some cases we may also want to add multiple fields based on the same original value, in our example besides the name of the store we could also add the location, the size of the store, the country or any other kind of information that could be useful for a posterior analysis.
 
-Para isso temos basicamente duas abordagens, a primeira consiste em utilizar um filtro `translate` para cada informação que queremos adicionar e a segunda consiste em utilizar um único filtro `translate` onde o valor associado a chave é um documento `json` com os campos que queremos adicionar, posteriormente o campo adicionado pelo filtro `translate` seria expandido utilizando o filtro `json`.
+We can approach this use case in two ways, the first one is to use one `translate` filter for each new information that we want to add, the second one is to use a single `translate` filter where the value in the key-value pair on the dictionary is a `json` document with all the fields that we want to add, later we would use the `json` filter to parse this field.
 
-A primeira abordagem é a mais simples, basta utilizar um arquivo para cada informação que queremos adicionar e utilizar múltiplos filtros `translate` no pipeline.
+The first way is very simple, we just need to use one dictionary file for each information that we want to add and use multiple `translate` filters in our pipeline.
 
-`EXEMPLO`
+`EXAMPLE`
 
 ```
 translate {
 	field => "storeId"
 	destination => "storeName"
-	dictionary_path => "/caminho/para/o/arquivo/store-name.yml"
+	dictionary_path => "/path/to/the/file/store-name.yml"
 	refresh_interval => 300
-	fallback => "local desconhecido"
+	fallback => "unknown place"
 }
 
 translate {
 	field => "storeId"
 	destination => "storeCity"
-	dictionary_path => "/caminho/para/o/arquivo/store-city.yml"
+	dictionary_path => "/path/to/the/file/store-city.yml"
 	refresh_interval => 300
-	fallback => "cidade desconhecida"
+	fallback => "unknown city"
 }
 ```
 
-A segunda abordagem não deixa de ser simples, mas tem alguns pequenos detalhes a mais.
+The second way is also very simple, but it has some small details.
 
-Primeiro temos que garantir que o valor no dicionário é um `json` no formato que o filtro `json` do logstash consiga fazer o _parsing_ sem problemas, para isso basta utilizarmos o formato abaixo.
+First we need to make sure that the value in the dictionary is a `json` on a format that the `json` filter in logstash will be able to parse without any problems, to do that we just need to use the format below.
 
 ```
 "1": '{ "storeName": "AMS", "storeCity": "Amsterdam", "storeCountry": "Netherlands" }'
@@ -171,15 +171,15 @@ Primeiro temos que garantir que o valor no dicionário é um `json` no formato q
 "4": '{ "storeName": "BER", "storeCity": "Berlin", "storeCountry": "Germany" }'
 ```
 
-Na sequência, caso a opção `fallback` esteja sendo usada, ela também precisa estar em formato `json`, pois o campo de destino do filtro `translate` será validado por um filtro `json` posteriormente no pipeline.
+Next, if the option `fallback` is being used, we also need to make sure that its value is a `json` in the same format, because the destination field from the `translate` filter will be validated by a `json` filter later in the pipeline.
 
 ```
 filter {
     translate {
         field => "storeId"
         destination => "[@metadata][translate]"
-        dictionary_path => "/opt/data/so.yml"
-        fallback => '{"storeName": "local desconhecido"}'
+        dictionary_path => "/path/to/the/file/store.yml"
+        fallback => '{"storeName": "unknown place"}'
     }
     json {
     	source => "[@metadata][translate]"
@@ -187,9 +187,9 @@ filter {
 }
 ```
 
-Na configuração acima estamos salvando o resultado do filtro `translate` em um campo temporário chamado `[@metadata][translate]`, os campos `[@metadata]` podem ser criados nos pipelines e utilizados pelos filtros, mas eles não estão presentes no documento final, além disso a opção `fallback` cria apenas o campo `storeName`.
+In the above configuration we are storing the result of the `translate` filter in a temporary field named `[@metadata][translate]`. The `[@metadata]` fields can be created and used by the filters in the pipeline, but they are not present in the final document, we also have the `fallback` option creating only the field `storeName`.
 
-Após o filtro `translate` utilizamos um filtro `json` tendo como origem o campo temporário criado.
+After the `translate` filter we use a `json` filter where the source is the temporary field.
 
 `PAYLOAD`
 
@@ -213,7 +213,8 @@ Após o filtro `translate` utilizamos um filtro `json` tendo como origem o campo
 	"storeCity" => "Amsterdam"
 }
 ```
-Utilizando o filtro `translate` partimos então de um documento simples.
+Using the `translate` filter we went from have a simple document.
+
 ```json
 {
 	"storeId": 1,
@@ -222,7 +223,7 @@ Utilizando o filtro `translate` partimos então de um documento simples.
 	"customerAvg": 15
 }
 ```
-E chegamos em um documento enriquecido com mais informações.
+To have an enriched document with more information.
 ```json
 {
 	"storeId": 1, 
@@ -235,17 +236,17 @@ E chegamos em um documento enriquecido com mais informações.
 }
 ```
 
-### conclusão
+### conclusion
 
-Podemos ver que o filtro `translate` nos permite enriquecer os documentos de uma forma bem simples, mas ele tem algumas limitações.
+We can see that the `translate` filter allows us to enrich the documents in a simple way, but it has some limitations.
 
-Como os dicionários utilizados pelo `translate` são carregados em memória quando o logstash inicia, o tamanho dos dicionários pode impactar na performance do logstash como um todo. 
+Since the dictionaries used by the `translate` filter are loaded into memory when logstash starts, the size of the dictionaries can impact in the overall performance of the system.
 
-A [documentação da elastic][translate-limit] informa que o filtro é testado internamente usando dicionários com cerca de 100.000 pares chave-valor, mas além da quantidade de chaves, o tamanho dos valores também influencia.
+The [elastic documentation][translate-limit] says that the filter is tested internally using dictionaries with 100.000 key-values pairs, but besides the number of keys, the size of the values could also have an impact in the performance.
 
-Se precisarmos utilizar dicionários muito grandes, talvez seja interessante verificar outras formas de realizar esse enriquecimento nos dados, seja fazendo um pré-processamento antes do dado entrar no logstash, seja utilizando outros filtros que realizam consultas externas como o filtro para consultar o `elasticsearch` ou o `memcached`.
+If we need to use very large dictionaries, maybe it is more interesting to see if there are other ways to do the data enrichment process, be that with some pre-processing before logstash or be that using other filters to make external queries like the `elasticsearch` filter or the `memcached` filter.
 
-Mais informações sobre o filtro `translate` podem ser encontradas na [documentação oficial][doc-translate].
+More information about the `translate` filter can be found in the [official documentation][doc-translate].
 
 [translate-limit]: https://www.elastic.co/guide/en/logstash/current/plugins-filters-translate.html#_description_151
 [doc-translate]: https://www.elastic.co/guide/en/logstash/current/plugins-filters-translate.html

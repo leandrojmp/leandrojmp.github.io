@@ -178,7 +178,7 @@ filter {
     translate {
         field => "storeId"
         destination => "[@metadata][translate]"
-        dictionary_path => "/opt/data/so.yml"
+        dictionary_path => "/caminho/para/o/arquivo/store.yml"
         fallback => '{"storeName": "local desconhecido"}'
     }
     json {
