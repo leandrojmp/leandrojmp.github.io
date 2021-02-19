@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "creating a local certificate authority"
+description: "example of how to create local certificates to use in dev or lab environments"
 date: 2020-10-13 21:30:00 -0300
 lang: en
 ref: "p0003"

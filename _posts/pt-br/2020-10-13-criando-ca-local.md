@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "criando uma autoridade certificadora local"
+description: "exemplo de como criar certificados locais para ambiente de dev e lab"
 date: 2020-10-13 21:30:00 -0300
 lang: pt-br
 ref: "p0003"

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "logstash: otimizando desempenho"
+description: "exemplo comparando a performance dos filtros grok e dissect do logstash"
 date: 2020-08-26 17:30:00 -0300
 lang: pt-br
 ref: "p0002"

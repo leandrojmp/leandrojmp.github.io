@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "logstash: usando o filtro translate"
+description: "exemplo de como utilizar o filtro translate no logstash para enriquecimento de dados"
 date: 2021-02-16 14:00:00 -0300
 lang: pt-br
 ref: "p0005"

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "logstash: geolocalização com geoip"
+description: "exemplo de como utilizar geolocalização com geoip no logstash e elasticsearch"
 date: 2020-10-25 01:00:00 -0300
 lang: pt-br
 ref: "p0004"

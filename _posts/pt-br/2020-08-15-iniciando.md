@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "/iniciando"
+description: "post inicial explicando o motivo do blog"
 date: 2020-08-15 21:30:00 -0300
 lang: pt-br
 ref: "p0001"
