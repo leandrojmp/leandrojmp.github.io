@@ -26,7 +26,7 @@ A partir da versão `6.X` se tornou possível executar múltiplos pipelines nati
 
 A definição dos pipelines que serão executados pelo logstash é feita através do arquivo `pipelines.yml`, é nele que definimos as características de um pipeline como o nome, a localização da configuração, a quantidade de _workers_ que serão utilizados, o tipo de fila e outras configurações específicas.
 
-Quando o logstash é executado como serviço ou via linha de comando sem argumentos, o arquivo `pipelines.yml` será lido e os pipelines serão inicializados, caso os argumentos `-e` ou `-f` sejam utilzados na linha de comando, o arquivo será ignorado.
+Quando o logstash é executado como serviço ou via linha de comando sem argumentos, o arquivo `pipelines.yml` será lido e os pipelines serão inicializados, caso os argumentos `-e` ou `-f` sejam utilizados na linha de comando, o arquivo será ignorado.
 
 Por padrão, quando instalado via `.rpm` ou `.deb`, o arquivo `pipelines.yml` vem configurado com um pipeline genérico chamado _main_.
 
@@ -117,7 +117,7 @@ Por exemplo, quando executamos o logstash em um servidor que tem 8 cores, por pa
 
 Podemos também querer utilizar fila em memória para alguns pipelines e fila em disco para outros, ou alterar o tamanho da _batch_ de envio de eventos para um pipeline específico, com os pipelines separados temos a flexibilidade de alterar essas configurações isoladamente.
 
-Continuando com o exemplo onde temos um pipeline **beats** e um pipeline **udp**, vamos considerar que o pipeline beats não precisa de fila persistente em disco e precisa rodar com 8 _workers_, 1 para cada núcleo de CPU, já o pipeline **udp** precisaria de uma fila em disco, mas poderia ser executado com apenas 2 _workers_.
+Continuando com o exemplo onde temos um pipeline **beats** e um pipeline **udp**, vamos considerar que o pipeline **beats** não precisa de fila persistente em disco e precisa rodar com 8 _workers_, 1 para cada núcleo de CPU, já o pipeline **udp** precisaria de uma fila em disco, mas poderia ser executado com apenas 2 _workers_.
 
 ```yaml
 - pipeline.id: "one"
