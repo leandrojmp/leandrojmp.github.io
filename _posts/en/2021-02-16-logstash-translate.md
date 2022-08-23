@@ -55,8 +55,8 @@ We want to create a new field named `storeName` based on the value of the field 
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeName"
+	source => "storeId"
+	target => "storeName"
 	dictionary => {
 		"1" => "AMS"
 	}
@@ -87,8 +87,8 @@ Saving the above dictionary as `store.yml`, we can configure the `translate` fil
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeName"
+	source => "storeId"
+	target => "storeName"
 	dictionary_path => "/path/to/the/file/store.yml"
 	refresh_interval => 300
 	fallback => "unknown place"
@@ -125,8 +125,8 @@ There may be cases where we want to replace the value of the original field inst
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeId"
+	source => "storeId"
+	target => "storeId"
 	dictionary_path => "/path/to/the/file/store.yml"
 	refresh_interval => 300
 	override => true
@@ -145,16 +145,16 @@ The first way is very simple, we just need to use one dictionary file for each i
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeName"
+	source => "storeId"
+	target => "storeName"
 	dictionary_path => "/path/to/the/file/store-name.yml"
 	refresh_interval => 300
 	fallback => "unknown place"
 }
 
 translate {
-	field => "storeId"
-	destination => "storeCity"
+	source => "storeId"
+	target => "storeCity"
 	dictionary_path => "/path/to/the/file/store-city.yml"
 	refresh_interval => 300
 	fallback => "unknown city"
@@ -177,8 +177,8 @@ Next, if the option `fallback` is being used, we also need to make sure that its
 ```
 filter {
     translate {
-        field => "storeId"
-        destination => "[@metadata][translate]"
+        source => "storeId"
+        target => "[@metadata][translate]"
         dictionary_path => "/path/to/the/file/store.yml"
         fallback => '{"storeName": "unknown place"}'
     }
