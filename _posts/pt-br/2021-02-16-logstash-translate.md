@@ -55,8 +55,8 @@ Queremos criar um novo campo chamado `storeName` a partir do valor do campo `sto
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeName"
+	source => "storeId"
+	target => "storeName"
 	dictionary => {
 		"1" => "AMS"
 	}
@@ -87,8 +87,8 @@ Salvando o dicionário acima como `store.yml`, podemos configurar o filtro `tran
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeName"
+	source => "storeId"
+	target => "storeName"
 	dictionary_path => "/caminho/para/o/arquivo/store.yml"
 	refresh_interval => 300
 	fallback => "local desconhecido"
@@ -125,8 +125,8 @@ Podem haver casos onde queremos substituir o valor do campo original e não cria
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeId"
+	source => "storeId"
+	target => "storeId"
 	dictionary_path => "/caminho/para/o/arquivo/store.yml"
 	refresh_interval => 300
 	override => true
@@ -145,16 +145,16 @@ A primeira abordagem é a mais simples, basta utilizar um arquivo para cada info
 
 ```
 translate {
-	field => "storeId"
-	destination => "storeName"
+	source => "storeId"
+	target => "storeName"
 	dictionary_path => "/caminho/para/o/arquivo/store-name.yml"
 	refresh_interval => 300
 	fallback => "local desconhecido"
 }
 
 translate {
-	field => "storeId"
-	destination => "storeCity"
+	source => "storeId"
+	target => "storeCity"
 	dictionary_path => "/caminho/para/o/arquivo/store-city.yml"
 	refresh_interval => 300
 	fallback => "cidade desconhecida"
@@ -177,8 +177,8 @@ Na sequência, caso a opção `fallback` esteja sendo usada, ela também precisa
 ```
 filter {
     translate {
-        field => "storeId"
-        destination => "[@metadata][translate]"
+        source => "storeId"
+        target => "[@metadata][translate]"
         dictionary_path => "/caminho/para/o/arquivo/store.yml"
         fallback => '{"storeName": "local desconhecido"}'
     }
