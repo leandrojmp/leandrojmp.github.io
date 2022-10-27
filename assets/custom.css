@@ -53,3 +53,12 @@ a.meta-bar-link:hover {
     color: #fff;
     text-decoration: none;
 }
+
+/* footnotes */
+a.footnote:before {   
+    content: "[";
+   }
+   
+a.footnote:after {
+    content: "]";
+}
