@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "elasticsearch: configurando a segurança"
-description: "tutorial e exemplo de como configurar a segurança e autenticação no elasticsearch"
+description: "tutorial e exemplo de como configurar a segurança e autenticação no elasticsearch 8"
 date: 2022-10-26 20:30:00 -0300
 lang: pt-br
 ref: "p0008"
@@ -130,7 +130,7 @@ O arquivo `elastic-stack-ca.zip` será criado no caminho `/usr/share/elasticsear
 ``` bash
 $ sudo mkdir /etc/elasticsearch/certs
 $ sudo cp /usr/share/elasticsearch/elastic-stack-ca.zip /etc/elasticsearch/certs
-$ sudo unzip /etc/elasticsearch/certs/elastic-stack-ca.zip
+$ sudo unzip /etc/elasticsearch/certs/elastic-stack-ca.zip -d /etc/elasticsearch/certs/
 ```
 
 Ao descompactarmos o arquivo `elastic-stack-ca.zip` teremos os arquivos `ca.crt` e `ca.key` 
@@ -316,7 +316,7 @@ $ sudo curl -XGET https://es01:9200/_cluster/health?pretty -u elastic:SENHA --ca
 
 ### Instalando o Kibana
 
-Para o Kibana iremos utilizar apenas **`1`** servidor também com _Rocky Linux 8_.
+Para o Kibana iremos utilizar apenas um servidor, também com _Rocky Linux 8_.
 
 ```bash
 $ wget https://artifacts.elastic.co/downloads/kibana/kibana-8.4.3-x86_64.rpm
@@ -351,8 +351,6 @@ Para utilizar a conta `kibana_system` será precisar [resetar a senha](#resetuse
 
 Nesse exemplo iremos criar uma conta de serviço para a comunicação entre o Kibana e o Elasticsearch.
 
-`COMANDOS`
-
 ```bash
 $ curl -X POST "https://es01:9200/_security/service/elastic/kibana/credential/token/kibanatoken?pretty" -u elastic:senha -k
 ```
@@ -370,8 +368,6 @@ $ curl -X POST "https://es01:9200/_security/service/elastic/kibana/credential/to
 ```
 
 Iremos adicionar o token e a passphrase do certificado no keystore do Kibana, que é criado automaticamente durante a instalação.
-
-`COMANDOS`
 
 ```bash
 $ sudo sh -c 'echo "passphrase" | /usr/share/kibana/bin/kibana-keystore add elasticsearch.ssl.keyPassphrase --stdin'
@@ -404,9 +400,21 @@ server.ssl.key: /etc/kibana/certs/kibana/kibana.key
 server.ssl.certificateAuthorities: [ "/etc/kibana/certs/ca/ca.crt" ]
 ```
 
+Para iniciar o Kibana usamos o `systemctl`.
+
+```bash
+$ sudo systemctl start kibana
+```
+
 Após iniciar o Kibana podemos acessar o servidor via navegador para validar que a conexão está usando TLS, será mostrado um alerta de que a conexão não é privada já que o navegador não conhece a CA local que utilizamos para gerar o certificado do Kibana, se necessário isso pode ser solucionado importando a CA local para o navegador utilizado.
 
 ![kibana-cert](/img/posts/0008/0008-04.png)
 
+### Mais informações
+
+Mais informações sobre como configurar a Segurança no Elasticsearch e outras formas de autenticação disponíveis dependendo da licença em uso podem ser encontradas na [documentação oficial][security-doc].
+
 [security-free]: https://www.elastic.co/blog/security-for-elasticsearch-is-now-free
 [service-account]: https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html#service-accounts-explanation
+[security-guide]: https://www.elastic.co/guide/en/elasticsearch/reference/current/manually-configure-security.html
+[security-doc]: https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html
