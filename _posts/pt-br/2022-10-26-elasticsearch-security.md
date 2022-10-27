@@ -404,11 +404,7 @@ server.ssl.key: /etc/kibana/certs/kibana/kibana.key
 server.ssl.certificateAuthorities: [ "/etc/kibana/certs/ca/ca.crt" ]
 ```
 
-Após iniciar o Kibana podemos acessar o servidor via navegador para validar que a conexão está usando TLS, mas como estamos utilizando uma CA local teremos o alerta de que a conexão não é privada.
-
-![kibana-cert](/img/posts/0008/0008-03.png)
-
-Podemos evitar esse alerta importando no browser a CA utilizada para criar os certificados.
+Após iniciar o Kibana podemos acessar o servidor via navegador para validar que a conexão está usando TLS, será mostrado um alerta de que a conexão não é privada já que o navegador não conhece a CA local que utilizamos para gerar o certificado do Kibana, se necessário isso pode ser solucionado importando a CA local para o navegador utilizado.
 
 ![kibana-cert](/img/posts/0008/0008-04.png)
 
