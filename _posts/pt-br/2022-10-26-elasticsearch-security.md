@@ -65,7 +65,7 @@ $ sudo rm -f /etc/elasticsearch/elasticsearch.keystore
 
 #### Bootstrap Checks
 
-Durante a inicialização o elasticsearch vai realizar alguns checks para saber se o processo consegue alocar memória suficiente, para isso precisamos alterar tanto o arquivo `/etc/security/limits.conf` quanto adicionar uma configuração extra para o serviço `systemd` do elasticsearch.
+Durante a inicialização o elasticsearch vai realizar algumas validações para saber se o processo consegue alocar memória suficiente, para isso precisamos alterar tanto o arquivo `/etc/security/limits.conf` quanto adicionar uma configuração extra para o serviço `systemd` do elasticsearch.
 
 No arquivo `/etc/security/limits.conf` adicionamos as linhas abaixo.
 
