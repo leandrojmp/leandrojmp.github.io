@@ -35,7 +35,7 @@ Utiliza TLS também para os requests feitos por clientes, é a configuração id
 
 ### Configurando a Segurança
 
-A versão `8` do Elasticsearch facilita bastante o processo de implementação de um cluster Elasticsearch com a segurança habilitada, mas em alguns cenários talvez seja necessário configurar manualmente os parâmetros de segurança.
+A versão `8` do Elasticsearch facilita bastante o processo de implementação de um cluster com a segurança habilitada, mas em alguns cenários talvez seja necessário configurar manualmente os parâmetros de segurança.
 
 Nesse exemplo iremos configurar manualmente a segurança em um cluster de **`3`** nós de Elasticsearch e **`1`** Kibana.
 
