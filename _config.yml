@@ -12,6 +12,7 @@ index:
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://web.leandrojmp.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: leandrojmp
+mastodon_username: leandrojmp
 github_username:  leandrojmp
 instagram_username:  leandrojmp
 lang: pt-br
