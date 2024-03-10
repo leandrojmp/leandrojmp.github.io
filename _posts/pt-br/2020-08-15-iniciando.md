@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0001"
 categories: [ posts, pt-br ]
 tags: [ intro, random ]
-cover: /img/posts/covers/0001.png
 ---
 Desde o meu primeiro contato com a internet, por volta de 96, sempre tive interesse em ter um espaço pra falar sobre qualquer assunto, desde coisas triviais do dia a dia até artigos mais longos sobre tecnologias que utilizo, um site pessoal como tantos outros.
 

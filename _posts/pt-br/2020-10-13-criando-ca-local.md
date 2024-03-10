@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0003"
 categories: [ posts, pt-br ]
 tags: [ infra ]
-cover: /img/posts/covers/0003.png
 ---
 ### Introdução
 

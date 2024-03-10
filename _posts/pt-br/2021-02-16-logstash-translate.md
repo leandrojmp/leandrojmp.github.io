@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0005"
 categories: [ posts, pt-br ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0005.png
 ---
 Quando usamos o logstash para processar os dados antes de enviarmos para o destino final, seja ele o elasticsearch ou alguma outra saída, pode ser interessante realizar algum tipo de enriquecimento nos dados para facilitar o processo de análise, monitoramento e filtragem.
 

@@ -7,7 +7,6 @@ lang: en
 ref: "p0002"
 categories: [ posts, en ]
 tags: [ logtash, elastic ]
-cover: /img/posts/covers/0002.png
 ---
 ### Introduction
 

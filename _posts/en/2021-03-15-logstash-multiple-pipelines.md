@@ -7,7 +7,6 @@ lang: en
 ref: "p0006"
 categories: [ posts, en ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0006.png
 ---
 It is common to have use cases where we need to receive data from many sources in logstash and apply different filters and send the data to different destinations, so it is important to isolate the events of each data source.
 

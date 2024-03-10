@@ -7,7 +7,6 @@ lang: en
 ref: "p0004"
 categories: [ posts, en ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0004.png
 ---
 An important point in monitoring devices, applications or systems exposed on the internet, is to include information about the origin of the requests or attempts we receive.
 

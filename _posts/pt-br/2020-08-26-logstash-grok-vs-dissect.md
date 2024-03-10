@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0002"
 categories: [ posts, pt-br ]
 tags: [ logtash, elastic ]
-cover: /img/posts/covers/0002.png
 ---
 ### Introdução
 

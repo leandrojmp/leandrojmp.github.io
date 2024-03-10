@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0008"
 categories: [ posts, pt-br ]
 tags: [ elasticsearch, elastic ]
-cover: /img/posts/covers/0008.png
 ---
 Um dos pontos mais importantes na hora de implementar um cluster Elasticsearch são as configurações relacionadas a segurança, tanto a autenticação de usuários, quanto a forma como os nós se comunicam entre si e com os clientes.
 

@@ -7,7 +7,6 @@ lang: en
 ref: "p0007"
 categories: [ posts, en ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0007.png
 ---
 In the process of [data enrichment][post-translate] using logstash it is pretty common to use the `translate` filter to add new fields in the documents based on the value of an existing field, to do that we use a `key-value` dictionary and if the key that we are searching exists in the dictionary, the value of this key will be added as a new field.
 

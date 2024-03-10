@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0009"
 categories: [ posts, pt-br ]
 tags: [ elasticsearch, elastic ]
-cover: /img/posts/covers/0009.png
 ---
 No Elasticsearch todos os campos do tipo `date` são sempre armazenados em _UTC_.
 

@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0007"
 categories: [ posts, pt-br ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0007.png
 ---
 No processo de [enriquecimento de dados][post-translate] com o Logstash é comum utilizarmos o filtro `translate` para adicionar novos campos no documento baseando-se no valor de um campo existente, para isso utilizamos um dicionário do tipo `chave-valor`, caso a chave buscada exista no dicionário, o valor associado pode ser adicionado em um novo campo.
 

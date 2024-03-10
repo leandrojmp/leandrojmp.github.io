@@ -7,7 +7,6 @@ lang: en
 ref: "p0008"
 categories: [ posts, en ]
 tags: [ elasticsearch, elastic ]
-cover: /img/posts/covers/0008.png
 ---
 One of the most important points when implementing an Elasticsearch cluster is the security-related settings, both the user authentication and the way nodes communicate with each other and with clients.
 

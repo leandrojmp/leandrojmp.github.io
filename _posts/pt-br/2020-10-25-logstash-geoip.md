@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0004"
 categories: [ posts, pt-br ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0004.png
 ---
 Um ponto importante no monitoramento de dispositivos, aplicações ou sistemas expostos na internet, é incluir informações sobre a origem dos acessos ou tentativas de acesso que recebemos.
 

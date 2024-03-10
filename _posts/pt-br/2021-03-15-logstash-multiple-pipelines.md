@@ -7,7 +7,6 @@ lang: pt-br
 ref: "p0006"
 categories: [ posts, pt-br ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0006.png
 ---
 É comum termos casos de uso onde precisamos receber dados de diversas fontes no logstash que terão tratamentos e destinos diferentes, por isso é importante isolar os eventos de cada fonte de dado.
 

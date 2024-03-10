@@ -7,7 +7,6 @@ lang: en
 ref: "p0005"
 categories: [ posts, en ]
 tags: [ logstash, elastic ]
-cover: /img/posts/covers/0005.png
 ---
 When we use logstash to process data before sending it to the final destination, be it elasticsearch or some other output, it may be useful to perform some kind of data enrichment to help with the analysis, monitoring or filtering.
 
