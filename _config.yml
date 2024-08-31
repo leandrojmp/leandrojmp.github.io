@@ -10,11 +10,8 @@ index:
   pt-br: /
   en: /en/
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://web.leandrojmp.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: leandrojmp
-mastodon_username: leandrojmp
+url: "https://blog.leandrojmp.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  leandrojmp
-instagram_username:  leandrojmp
 lang: pt-br
 permalink: /:categories/:year/:month/:title
 show_excerpts: false
