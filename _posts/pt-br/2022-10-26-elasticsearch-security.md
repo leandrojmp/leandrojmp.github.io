@@ -38,11 +38,11 @@ A versão `8` do Elasticsearch facilita bastante o processo de implementação d
 
 Nesse exemplo iremos configurar manualmente a segurança em um cluster de **`3`** nós de Elasticsearch e **`1`** Kibana.
 
-![es-security](/img/posts/0008/0008-01.jpg)
+![es-security](/img/posts/0008/0008-01.png)
 
 Nessa configuração os nós de Elasticsearch se comunicam utilizando TLS, essa comunicação entre os nós utiliza um protocolo chamado de _transport_ e a segurança é habilitada através dos parâmetros `xpack.security.transport.ssl.*`, além disso a comunicação dos clientes com qualquer nó do cluster utiliza requisições _REST_ via _HTTPS_, a segurança na comunicação com os clientes é habilitada através dos parâmetros `xpack.security.http.ssl.*`.
 
-![es-security-xpack](/img/posts/0008/0008-02.jpg)
+![es-security-xpack](/img/posts/0008/0008-02.png)
 
 Para que essa comunicação seja possível precisamos de certificados para cada nó e uma autoridade certificadora para criar os certificados.
 
