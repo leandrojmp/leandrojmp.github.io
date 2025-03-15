@@ -38,11 +38,11 @@ Version `8` makes the process of deploying an Elasticsearch cluster with securit
 
 In this example we will manually configure security on a cluster of **`3`** Elasticsearch nodes and **`1`** Kibana.
 
-![es-security](/img/posts/0008/0008-01.jpg)
+![es-security](/img/posts/0008/0008-01.png)
 
 In this configuration the Elasticsearch nodes communicate with each other using TLS, this communication between the nodes uses a protocol called _transport_ and security is enabled through the `xpack.security.transport.ssl.*` settings, the communication of clients with any cluster node uses _REST_ requests via _HTTPS_, security in communication with clients is enabled through the `xpack.security.http.ssl.*` settings.
 
-![es-security-xpack](/img/posts/0008/0008-02.jpg)
+![es-security-xpack](/img/posts/0008/0008-02.png)
 
 To make this communication possible, we need to create a certificate authority to generate a certificate for each node.
 
